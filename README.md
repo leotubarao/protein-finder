@@ -6,7 +6,7 @@ O Protein Finder foi desenvolvido para melhorar a usabilidade dos consultores da
 
 ### Demonstração
 
-Para visualizar o aplicativo no seu navegador, basta [clicar aqui](https://leotubarao.github.io/protein-finder) para abrir.
+Para visualizar o aplicativo no seu navegador, basta [clicar aqui](https://protein-finder.ltco.com.br/) para abrir.
 
 ### Dados
 
