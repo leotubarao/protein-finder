@@ -101,7 +101,7 @@ const Dashboard: React.FC = () => {
                     Valor bruto
                     <strong>{product.bruto}</strong>
                   </li>
-                  <li>
+                  <li className="refColumn">
                     Base para cálculo de desconto
                     <strong>{product.ref}</strong>
                   </li>

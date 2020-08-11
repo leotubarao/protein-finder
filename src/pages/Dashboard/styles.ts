@@ -5,6 +5,27 @@ interface FormProps {
   hasError: boolean;
 }
 
+const breakpoint = {
+  xs: {
+    max: '575.98px',
+  },
+  sm: {
+    min: '576px',
+    max: '767.98px',
+  },
+  md: {
+    min: '768px',
+    max: '991.98px',
+  },
+  lg: {
+    min: '992px',
+    max: '1199.98px',
+  },
+  xl: {
+    min: '1200px',
+  },
+};
+
 const colors = {
   green: '#0B5742',
   red: '#c53030',
@@ -24,12 +45,17 @@ export const Title = styled.h1`
   align-items: center;
   font-size: 48px;
   color: ${colors.grays.g0};
-  max-width: 450px;
   line-height: 56px;
   margin-top: 80px;
 
   svg {
     margin-right: 8px;
+  }
+
+  @media (max-width: ${breakpoint.xs.max}) {
+    font-size: 38px;
+    justify-content: center;
+    margin-top: 0;
   }
 `;
 
@@ -44,10 +70,13 @@ export const Form = styled.form<FormProps>`
     height: 70px;
     padding: 0 24px;
     border: 0;
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px;
     color: ${colors.grays.g0};
     border: 2px solid ${colors.white};
-    border-right: 0;
+
+    @media (max-width: ${breakpoint.xs.max}) {
+      text-align: center;
+    }
 
     ${(props) =>
       props.hasError &&
@@ -57,21 +86,6 @@ export const Form = styled.form<FormProps>`
 
     &::placeholder {
       color: ${colors.grays.g2};
-    }
-  }
-
-  button {
-    background-color: ${colors.green};
-    width: 210px;
-    height: 70px;
-    color: ${colors.white};
-    font-weight: bold;
-    border: 0;
-    border-radius: 0 5px 5px 0;
-    transition: background-color 200ms ease-in-out;
-
-    &:hover {
-      background-color: ${shade(0.2, colors.green)};
     }
   }
 `;
@@ -85,6 +99,10 @@ export const Error = styled.span`
 export const Products = styled.div`
   margin-top: 80px;
   max-width: 800px;
+
+  @media (max-width: ${breakpoint.xs.max}) {
+    margin-top: 40px;
+  }
 
   div.product-wrapper {
     display: flex;
@@ -127,12 +145,22 @@ export const Products = styled.div`
     ul {
       display: flex;
       flex-wrap: wrap;
+      margin-top: -15px;
       margin-left: -15px;
 
       li {
         list-style: none;
+        margin-top: 15px;
         margin-left: 15px;
         font-size: 14px;
+
+        /* &.refColumn {
+          flex: 1;
+          & + * {
+            @media (max-width: ${breakpoint.xs.max}) {
+            }
+          }
+        } */
 
         strong {
           display: block;
@@ -143,10 +171,11 @@ export const Products = styled.div`
   }
 
   div.quantity {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-self: flex-end;
     margin-left: 16px;
+    display: none;
   }
 
   button {
