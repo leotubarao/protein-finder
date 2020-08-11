@@ -56,8 +56,12 @@ const Dashboard: React.FC = () => {
   );
 
   useEffect(() => {
-    const findProducts = productsHLN.filter((product) =>
-      product.nome.toLowerCase().includes(fieldForm.toLowerCase()),
+    const keys = ['codigo', 'nome'];
+
+    const findProducts = productsHLN.filter((product: any) =>
+      keys.some((key: string) =>
+        product[key].toLowerCase().includes(fieldForm.toLowerCase()),
+      ),
     );
 
     setProducts(findProducts);
@@ -75,7 +79,6 @@ const Dashboard: React.FC = () => {
           value={fieldForm}
           onChange={(e) => setFieldForm(e.target.value)}
         />
-        <button type="submit">Pesquisar</button>
       </Form>
 
       {inputError && <Error>{inputError}</Error>}
