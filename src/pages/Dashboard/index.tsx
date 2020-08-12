@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, FormEvent } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { RiUserSearchLine } from 'react-icons/ri';
 
+import { Link } from 'react-router-dom';
 import productsHLN from '../../data/1596671839581.json';
 
 import { Title, Form, Error, Products } from './styles';
@@ -82,6 +83,8 @@ const Dashboard: React.FC = () => {
       </Form>
 
       {inputError && <Error>{inputError}</Error>}
+
+      <Link to="/wishlist">Wishlist</Link>
 
       <Products>
         {products &&
