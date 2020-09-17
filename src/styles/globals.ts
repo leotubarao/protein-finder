@@ -1,5 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
+const { innerWidth } = window;
+const { clientWidth } = document.body;
+
+const sizeScroll = innerWidth - clientWidth;
+
 export default createGlobalStyle`
   * {
     margin: 0;
@@ -26,5 +31,9 @@ export default createGlobalStyle`
     max-width: 960px;
     margin: 0 auto;
     padding: 40px 20px;
+  }
+
+  body.large {
+    padding-right: ${sizeScroll}px
   }
 `;

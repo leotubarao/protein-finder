@@ -1,6 +1,7 @@
 {
   "name": "protein-finder",
   "version": "0.1.0",
+  "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -12,10 +13,12 @@
     "axios": "^0.19.2",
     "polished": "^3.5.2",
     "react": "^16.13.1",
+    "react-device-detect": "^1.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "remove-accents": "^0.4.2",
     "styled-components": "^5.1.1",
     "typescript": "~3.7.2"
   },
