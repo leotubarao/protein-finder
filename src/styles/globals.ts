@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { breakpoint } from './configs';
 
 const { innerWidth } = window;
 const { clientWidth } = document.body;
@@ -28,7 +29,7 @@ export default createGlobalStyle`
   }
 
   #root {
-    max-width: 960px;
+    max-width: ${breakpoint.xl.min};
     margin: 0 auto;
     padding: 40px 20px;
   }
