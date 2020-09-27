@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { HTMLAttributes, useCallback, useEffect, useState } from 'react';
+import React, { HTMLAttributes } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 
 import { WishlistState, useProduct } from '../../hooks/product';
