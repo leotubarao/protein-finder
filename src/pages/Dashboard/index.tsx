@@ -52,10 +52,16 @@ const Dashboard: React.FC = () => {
   const productsFiltered = useMemo(() => {
     const keys = ['codigo', 'nome'];
 
+    const sanitizedString = (str: string): string =>
+      str
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/([^0-9a-zA-Z ])/g, '');
+
     // eslint-disable-next-line
     return products.filter((product: any) =>
       keys.some((key: string) =>
-        product[key].toLowerCase().includes(fieldForm.toLowerCase()),
+        sanitizedString(product[key]).includes(sanitizedString(fieldForm)),
       ),
     );
   }, [products, fieldForm]);
