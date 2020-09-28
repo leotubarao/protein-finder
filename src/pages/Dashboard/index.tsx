@@ -9,11 +9,13 @@ import { isMobile } from 'react-device-detect';
 import { BsViewList } from 'react-icons/bs';
 
 import { Form, Error, Products } from './styles';
-import { useProduct } from '../../hooks/product';
+import { ProductState, useProduct } from '../../hooks/product';
 
 import Product from '../../components/Product';
 import Header from '../../components/Header';
 import FloatButton from '../../components/FloatButton';
+
+type ProductKey = keyof ProductState;
 
 const Dashboard: React.FC = () => {
   const [fieldForm, setFieldForm] = useState('');
@@ -50,14 +52,23 @@ const Dashboard: React.FC = () => {
   }, [fieldForm]);
 
   const productsFiltered = useMemo(() => {
-    const keys = ['codigo', 'nome'];
+    if (!products) return null;
 
-    // eslint-disable-next-line
-    return products.filter((product: any) =>
-      keys.some((key: string) =>
-        product[key].toLowerCase().includes(fieldForm.toLowerCase()),
+    const sanitizedString = (str: string): string =>
+      str
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/([^0-9a-zA-Z ])/g, '');
+
+    const keys = ['codigo', 'nome'] as const;
+
+    const filterProducts = products.filter((product: ProductState) =>
+      keys.some((key: ProductKey) =>
+        sanitizedString(product[key]).includes(sanitizedString(fieldForm)),
       ),
     );
+
+    return filterProducts as ProductState[];
   }, [products, fieldForm]);
 
   return (
