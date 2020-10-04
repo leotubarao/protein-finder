@@ -21,7 +21,7 @@ export default createGlobalStyle`
 
   body, input, button {
     font-size: 16px;
-    font-family: Roboto, sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 
   button {
@@ -36,5 +36,16 @@ export default createGlobalStyle`
 
   body.large {
     padding-right: ${sizeScroll}px
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 `;

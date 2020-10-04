@@ -1,12 +1,12 @@
 import React from 'react';
-import { RiUserSearchLine } from 'react-icons/ri';
+import { ReactComponent as LogotypeProteinFinder } from '../../assets/logotype-protein-finder.svg';
 
 import { Container } from './styles';
 
 const Header: React.FC = () => (
   <Container>
-    <RiUserSearchLine />
-    Protein Finder
+    <LogotypeProteinFinder />
+    <span className="sr-only">Protein Finder</span>
   </Container>
 );
 
