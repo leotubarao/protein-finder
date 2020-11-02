@@ -7,12 +7,13 @@ import React, {
 } from 'react';
 import { isMobile } from 'react-device-detect';
 import { BsViewList } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
-import { Form, Error, Products } from './styles';
+import { Form, Error } from './styles';
 import { ProductState, useProduct } from '../../hooks/product';
 
-import Product from '../../components/Product';
 import Header from '../../components/Header';
+import Products from '../../components/Products';
 import FloatButton from '../../components/FloatButton';
 
 type ProductKey = keyof ProductState;
@@ -86,15 +87,7 @@ const Dashboard: React.FC = () => {
 
       {inputError && <Error>{inputError}</Error>}
 
-      <Products>
-        {productsFiltered &&
-          productsFiltered.map((product) => (
-            <Product
-              key={product.codigo}
-              item={{ product, quantity: totalProduct(product) }}
-            />
-          ))}
-      </Products>
+      <Products content={productsFiltered} />
     </>
   );
 };

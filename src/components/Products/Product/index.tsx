@@ -1,8 +1,7 @@
 import React, { HTMLAttributes } from 'react';
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 
-import { WishlistState, useProduct } from '../../hooks/product';
-import EditInPlace from '../EditInPlace';
+import { WishlistState } from '../../../hooks/product';
+import Quantity from '../Quantity';
 
 import { Container } from './styles';
 
@@ -11,9 +10,7 @@ interface ProductProps extends HTMLAttributes<HTMLElement> {
 }
 
 const Product: React.FC<ProductProps> = ({ item, ...rest }) => {
-  const { addWishlist, removeWishlist, inputWishlist } = useProduct();
-
-  const { product, quantity } = item;
+  const { product } = item;
 
   return (
     <Container {...rest}>
@@ -54,19 +51,7 @@ const Product: React.FC<ProductProps> = ({ item, ...rest }) => {
         </ul>
       </div>
 
-      <div className="wrapper-quantity">
-        <button type="button" onClick={() => addWishlist(product)}>
-          <FiChevronUp size={30} />
-        </button>
-        <EditInPlace value={item} onChangeValue={inputWishlist} />
-        <button
-          type="button"
-          disabled={quantity === 0}
-          onClick={() => removeWishlist(product)}
-        >
-          <FiChevronDown size={30} />
-        </button>
-      </div>
+      <Quantity item={item} />
     </Container>
   );
 };

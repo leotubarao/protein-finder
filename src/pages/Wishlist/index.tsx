@@ -1,9 +1,8 @@
 import React from 'react';
-// import { isMobile } from 'react-device-detect';
 import { BsArrowLeft } from 'react-icons/bs';
 
-import Product from '../../components/Product';
 import Header from '../../components/Header';
+import Product from '../../components/Products/Product';
 import FloatButton from '../../components/FloatButton';
 
 import { Products } from './styles';
@@ -29,3 +28,29 @@ const Wishlist: React.FC = () => {
 };
 
 export default Wishlist;
+
+/* import React from 'react';
+import { BsArrowLeft } from 'react-icons/bs';
+
+import Header from '../../components/Header';
+import Products from '../../components/Products';
+import FloatButton from '../../components/FloatButton';
+
+import { useProduct } from '../../hooks/product';
+
+const Wishlist: React.FC = () => {
+  const { wishlist } = useProduct();
+
+  return (
+    <>
+      <FloatButton to="/" icon={BsArrowLeft} side="left" />
+
+      <Header />
+
+      <Products content={wishlist} />
+    </>
+  );
+};
+
+export default Wishlist;
+*/
