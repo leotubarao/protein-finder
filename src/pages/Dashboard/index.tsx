@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import { isMobile } from 'react-device-detect';
 import { BsViewList } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
 
 import { Form, Error } from './styles';
 import { ProductState, useProduct } from '../../hooks/product';
@@ -21,7 +20,7 @@ type ProductKey = keyof ProductState;
 const Dashboard: React.FC = () => {
   const [fieldForm, setFieldForm] = useState('');
   const [inputError, setInputError] = useState('');
-  const { products, totalProduct } = useProduct();
+  const { products } = useProduct();
 
   const handleFindProduct = useCallback(
     (event: FormEvent<HTMLFormElement>) => {

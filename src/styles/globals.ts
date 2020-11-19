@@ -42,6 +42,10 @@ export default createGlobalStyle`
     padding-right: ${sizeScroll}px
   }
 
+  body.modal-opened {
+    overflow: hidden;
+  }
+
   .sr-only {
     position: absolute;
     width: 1px;
