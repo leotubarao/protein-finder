@@ -15,6 +15,7 @@ export const Container = styled(animated.div)`
   right: 0;
   padding: 1rem;
   overflow: hidden;
+  z-index: 1100;
 
   backdrop-filter: blur(5px);
 `;

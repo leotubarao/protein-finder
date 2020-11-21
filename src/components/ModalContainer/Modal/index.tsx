@@ -3,6 +3,7 @@ import { FiX } from 'react-icons/fi';
 
 import { ReactComponent as LogotypeProteinFinder } from '../../../assets/logotype-protein-finder.svg';
 import { useModal } from '../../../hooks/modal';
+import Select from '../../Select';
 
 import { Container } from './styles';
 
@@ -12,6 +13,8 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ style }) => {
   const { removeModal } = useModal();
+
+  const discountList = [1, 25, 35, 42, 50];
 
   return (
     <Container style={style}>
@@ -23,6 +26,8 @@ const Modal: React.FC<ModalProps> = ({ style }) => {
       </header>
 
       <p>Escolha qual porcentagem você deseja visualizar?</p>
+
+      <Select options={discountList} />
     </Container>
   );
 };

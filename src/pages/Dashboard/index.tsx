@@ -6,14 +6,12 @@ import React, {
   FormEvent,
 } from 'react';
 import { isMobile } from 'react-device-detect';
-import { BsViewList } from 'react-icons/bs';
 
 import { Form, Error } from './styles';
 import { ProductState, useProduct } from '../../hooks/product';
 
 import Header from '../../components/Header';
 import Products from '../../components/Products';
-import FloatButton from '../../components/FloatButton';
 
 type ProductKey = keyof ProductState;
 
@@ -73,8 +71,6 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <FloatButton to="/wishlist" icon={BsViewList} side="right" />
-
       <Header />
       <Form hasError={!!inputError} onSubmit={handleFindProduct}>
         <input

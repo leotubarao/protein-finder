@@ -8,6 +8,7 @@ import React, {
 import { useTransition } from 'react-spring';
 
 import ModalContainer from '../components/ModalContainer';
+import Discount from '../components/ModalContainer/Discount';
 
 interface ModalContextData {
   discount: number;
@@ -19,7 +20,15 @@ interface ModalContextData {
 const ModalContext = createContext<ModalContextData>({} as ModalContextData);
 
 const ModalProvider: React.FC = ({ children }) => {
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(() => {
+    const storageWishlistProducts = localStorage.getItem(
+      '@ProteinFinder:discount',
+    );
+
+    if (storageWishlistProducts) return false;
+
+    return true;
+  });
 
   const [discount, setDiscount] = useState(() => {
     const storageWishlistProducts = localStorage.getItem(
@@ -28,7 +37,7 @@ const ModalProvider: React.FC = ({ children }) => {
 
     if (storageWishlistProducts) return JSON.parse(storageWishlistProducts);
 
-    return null;
+    return 1;
   });
 
   useEffect(() => {
@@ -55,10 +64,12 @@ const ModalProvider: React.FC = ({ children }) => {
 
   const filterDiscount = useCallback(
     (disc: number) => {
-      setDiscount(disc);
-      removeModal();
+      if (disc !== discount) {
+        setDiscount(disc);
+        removeModal();
+      }
     },
-    [removeModal],
+    [discount, removeModal],
   );
 
   const modalWithTransitions = useTransition(modal, null, {
@@ -72,6 +83,7 @@ const ModalProvider: React.FC = ({ children }) => {
       value={{ discount, addModal, removeModal, filterDiscount }}
     >
       {children}
+      <Discount />
       {modalWithTransitions.map(
         ({ item, key, props }) =>
           item && <ModalContainer key={key} style={props} state={modal} />,
