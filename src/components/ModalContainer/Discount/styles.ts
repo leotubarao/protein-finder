@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-import { colors } from '../../../styles/configs';
+import { breakpoint, colors } from '../../../styles/configs';
 
 export const Container = styled.span`
   background-color: ${colors.red};
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
 
   position: fixed;
@@ -20,13 +20,22 @@ export const Container = styled.span`
   cursor: pointer;
 
   color: ${colors.white};
-  font-size: 24px;
 
   transition: transform 200ms ease-in-out;
+
+  @media (min-width: ${breakpoint.lg.min}) {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
 
   svg {
     margin: auto;
     color: ${colors.white};
+
+    @media (max-width: ${breakpoint.md.max}) {
+      max-width: 20px;
+    }
   }
 
   &:hover {
