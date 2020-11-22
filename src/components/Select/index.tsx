@@ -55,8 +55,6 @@ const Select: React.FC<SelectProps> = ({ options }) => {
     transitionElementOptions,
   );
 
-  // Ref: https://medium.com/the-andela-way/custom-select-dropdown-in-react-1758c1f6f537
-
   return (
     <Container ref={selectRef} onClick={open}>
       <DropDownHeader open={isOpen}>
