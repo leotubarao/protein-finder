@@ -13,7 +13,7 @@ const Wishlist: React.FC = () => {
 
   return (
     <>
-      <FloatButton to="/" icon={BsArrowLeft} side="left" />
+      <FloatButton to="/" icon={BsArrowLeft} />
 
       <Header />
 
@@ -28,29 +28,3 @@ const Wishlist: React.FC = () => {
 };
 
 export default Wishlist;
-
-/* import React from 'react';
-import { BsArrowLeft } from 'react-icons/bs';
-
-import Header from '../../components/Header';
-import Products from '../../components/Products';
-import FloatButton from '../../components/FloatButton';
-
-import { useProduct } from '../../hooks/product';
-
-const Wishlist: React.FC = () => {
-  const { wishlist } = useProduct();
-
-  return (
-    <>
-      <FloatButton to="/" icon={BsArrowLeft} side="left" />
-
-      <Header />
-
-      <Products content={wishlist} />
-    </>
-  );
-};
-
-export default Wishlist;
-*/

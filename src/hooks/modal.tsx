@@ -73,7 +73,7 @@ const ModalProvider: React.FC = ({ children }) => {
   );
 
   const modalWithTransitions = useTransition(modal, null, {
-    from: { opacity: 1 },
+    from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
   });

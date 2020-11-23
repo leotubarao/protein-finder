@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { animated } from 'react-spring';
 
-import { colors } from '../../../styles/configs';
+import { breakpoint, colors } from '../../../styles/configs';
 
 export const Container = styled(animated.div)`
   background-color: ${colors.grays.g5};
@@ -16,6 +16,14 @@ export const Container = styled(animated.div)`
   align-items: center;
   color: ${colors.white};
 
+  @media (max-width: ${breakpoint.xs.max}) {
+    padding: 40px 1rem;
+
+    > header {
+      max-width: 90%;
+    }
+  }
+
   header {
     button.close {
       background-color: transparent;
@@ -29,6 +37,11 @@ export const Container = styled(animated.div)`
       right: 5px;
       display: flex;
     }
+
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
   }
 
   p {
@@ -38,5 +51,9 @@ export const Container = styled(animated.div)`
     font-size: 20px;
     font-weight: 700;
     text-align: center;
+
+    @media (min-width: ${breakpoint.sm.min}) {
+      margin-top: 40px;
+    }
   }
 `;

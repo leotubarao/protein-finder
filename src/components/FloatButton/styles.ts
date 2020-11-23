@@ -1,38 +1,35 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { colors } from '../../styles/configs';
+import { breakpoint, colors } from '../../styles/configs';
 
-interface ButtonProps {
-  side?: 'left' | 'right';
-}
-
-export const Container = styled(Link)<ButtonProps>`
+export const Container = styled(Link)`
   background-color: ${colors.grays.g5};
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   border: 0;
   border-radius: 50%;
 
   display: flex;
   position: fixed;
   top: 15px;
+  left: 15px;
   z-index: 1000;
 
-  ${({ side }) =>
-    side === 'left'
-      ? css`
-          left: 15px;
-        `
-      : css`
-          right: 15px;
-        `}
-
   transition: background-color 200ms ease-in-out;
+
+  @media (min-width: ${breakpoint.lg.min}) {
+    width: 60px;
+    height: 60px;
+  }
 
   svg {
     margin: auto;
     color: ${colors.white};
+
+    @media (max-width: ${breakpoint.md.max}) {
+      max-width: 20px;
+    }
   }
 
   &:hover {

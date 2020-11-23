@@ -12,7 +12,7 @@ interface ModalContainerProps {
 
 const ModalContainer: React.FC<ModalContainerProps> = ({ state, style }) => {
   const modalWithTransitions = useTransition(state, null, {
-    from: { opacity: 1 },
+    from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
   });

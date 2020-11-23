@@ -1,10 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { breakpoint, colors } from './configs';
-
-const { innerWidth } = window;
-const { clientWidth } = document.body;
-
-const sizeScroll = innerWidth - clientWidth;
+import { breakpoint, colors, sizeScroll } from './configs';
 
 export default createGlobalStyle`
   * {
@@ -12,6 +7,7 @@ export default createGlobalStyle`
     padding: 0;
     outline: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
@@ -39,10 +35,11 @@ export default createGlobalStyle`
   }
 
   body.large {
-    padding-right: ${sizeScroll}px
+    padding-right: ${sizeScroll}px;
   }
 
   body.modal-opened {
+    padding-right: ${sizeScroll}px;
     overflow: hidden;
   }
 

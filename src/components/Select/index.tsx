@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { useTransition } from 'react-spring';
+import React, { useState, useRef, useCallback } from 'react';
+import { useTransition, config } from 'react-spring';
 
 import { useModal } from '../../hooks/modal';
 import {
@@ -44,6 +43,7 @@ const Select: React.FC<SelectProps> = ({ options }) => {
   }, [isOpen, handleClickOutside]);
 
   const transitionElementOptions = {
+    config: config.default,
     from: { transform: 'translate3d(0,-70%,0)', opacity: 0 },
     enter: { transform: 'translate3d(0,-50%,0)', opacity: 1 },
     leave: { transform: 'translate3d(0,-70%,0)', opacity: 0 },
