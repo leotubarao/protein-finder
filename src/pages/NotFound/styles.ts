@@ -5,21 +5,22 @@ import { tint } from 'polished';
 import { breakpoint, colors } from '../../styles/configs';
 
 export const Container = styled.div`
-  height: calc(100vh - 80px);
+  height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: ${colors.grays.g0};
+  color: ${colors.grays.g5};
 
   > svg {
-    font-size: 48px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   h2 {
-    font-size: 80px;
+    font-size: 40px;
 
-    @media (max-width: ${breakpoint.md.max}) {
+    @media (min-width: ${breakpoint.lg.min}) {
       font-size: 60px;
     }
   }
@@ -38,7 +39,7 @@ export const Button = styled(Link)`
 
   color: ${colors.white};
   text-decoration: none;
-  padding: 20px 40px;
+  padding: 15px 40px;
   padding-left: 32px;
 
   transition: background-color 200ms ease-in-out;

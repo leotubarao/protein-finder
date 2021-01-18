@@ -9,8 +9,9 @@ export const Container = styled.span`
   border-radius: 50%;
 
   position: fixed;
-  top: 15px;
-  right: 15px;
+  top: 10px;
+  left: 50%;
+  margin-left: -22.5px;
   z-index: 1000;
 
   display: flex;
@@ -26,6 +27,8 @@ export const Container = styled.span`
   @media (min-width: ${breakpoint.lg.min}) {
     width: 60px;
     height: 60px;
+    top: 15px;
+    margin-left: -30px;
     font-size: 24px;
   }
 

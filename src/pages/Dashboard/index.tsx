@@ -12,6 +12,7 @@ import { ProductState, useProduct } from '../../hooks/product';
 
 import Header from '../../components/Header';
 import Products from '../../components/Products';
+import Discount from '../../components/ModalContainer/Discount';
 
 type ProductKey = keyof ProductState;
 
@@ -71,7 +72,10 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
+      <Discount />
+
       <Header />
+
       <Form hasError={!!inputError} onSubmit={handleFindProduct}>
         <input
           placeholder="Digite o código/nome do produto"

@@ -4,6 +4,7 @@ import { BsArrowLeft } from 'react-icons/bs';
 import Header from '../../components/Header';
 import Product from '../../components/Products/Product';
 import FloatButton from '../../components/FloatButton';
+import Discount from '../../components/ModalContainer/Discount';
 
 import { Products } from './styles';
 import { useProduct } from '../../hooks/product';
@@ -14,6 +15,7 @@ const Wishlist: React.FC = () => {
   return (
     <>
       <FloatButton to="/" icon={BsArrowLeft} />
+      <Discount />
 
       <Header />
 

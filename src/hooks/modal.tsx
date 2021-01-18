@@ -8,7 +8,6 @@ import React, {
 import { useTransition } from 'react-spring';
 
 import ModalContainer from '../components/ModalContainer';
-import Discount from '../components/ModalContainer/Discount';
 
 interface ModalContextData {
   discount: number;
@@ -83,7 +82,6 @@ const ModalProvider: React.FC = ({ children }) => {
       value={{ discount, addModal, removeModal, filterDiscount }}
     >
       {children}
-      <Discount />
       {modalWithTransitions.map(
         ({ item, key, props }) =>
           item && <ModalContainer key={key} style={props} state={modal} />,

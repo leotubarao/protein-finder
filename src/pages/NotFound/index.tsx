@@ -1,15 +1,17 @@
 import React from 'react';
-import { RiArrowLeftLine, RiUserSearchLine } from 'react-icons/ri';
+import { RiArrowLeftLine } from 'react-icons/ri';
+import { ReactComponent as LogoProteinFinder } from '../../assets/logo-protein-finder.svg';
 
 import { Container, Button } from './styles';
 
 const NotFound: React.FC = () => (
   <Container>
-    <RiUserSearchLine />
-    <h2>404!</h2>
+    <LogoProteinFinder />
+    <h2>404</h2>
+    <h3>Esta página não foi encontrada.</h3>
     <Button to="/">
       <RiArrowLeftLine />
-      Voltar
+      Voltar para Home
     </Button>
   </Container>
 );

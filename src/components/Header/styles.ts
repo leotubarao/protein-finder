@@ -4,7 +4,7 @@ import { breakpoint, colors } from '../../styles/configs';
 
 export const Container = styled.h1`
   display: flex;
-  margin-top: 80px;
+  margin-top: 40px;
   color: ${colors.grays.g0};
 
   @media (max-width: ${breakpoint.xs.max}) {

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { breakpoint, colors } from '../../styles/configs';
@@ -74,7 +74,12 @@ export const Button = styled(Link)`
   }
 `;
 
-export const List = styled.div`
+interface ListProps {
+  quantity: boolean;
+}
+
+export const List = styled.div<ListProps>`
+  max-height: 500px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -82,10 +87,27 @@ export const List = styled.div`
   padding: 18px;
   border-radius: 5px;
 
+  .wrapper-list {
+    padding-right: 36px;
+    width: calc(100% + 36px);
+
+    ${(props) =>
+      props.quantity &&
+      css`
+        overflow-y: auto;
+        padding-right: 28px;
+      `}
+  }
+
   .item {
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 35px;
+
+    &:first-child {
+      height: 25px;
+    }
 
     & + * {
       margin-top: 10px;
@@ -108,6 +130,7 @@ export const List = styled.div`
 
     p {
       font-size: 12px;
+      line-height: 1.2;
       color: ${colors.grays.g4};
       flex: 1;
     }

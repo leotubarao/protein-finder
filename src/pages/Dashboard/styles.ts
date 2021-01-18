@@ -9,8 +9,12 @@ interface FormProps {
 export const Form = styled.form<FormProps>`
   display: flex;
 
-  margin-top: 40px;
+  margin-top: 20px;
   max-width: 700px;
+
+  @media (min-width: ${breakpoint.lg.min}) {
+    margin-top: 40px;
+  }
 
   input {
     flex: 1;

@@ -15,13 +15,15 @@ const ListBox: React.FC = () => {
 
   return (
     <>
-      <List>
-        {wishlist.map(({ product, quantity }) => (
-          <div className="item" key={product.codigo}>
-            <span>{quantity}</span>
-            <p>{product.nome}</p>
-          </div>
-        ))}
+      <List className="list-products" quantity={wishlist.length > 10}>
+        <div className="wrapper-list">
+          {wishlist.map(({ product, quantity }) => (
+            <div className="item" key={product.codigo}>
+              <span>{quantity}</span>
+              <p>{product.nome}</p>
+            </div>
+          ))}
+        </div>
       </List>
       <span className="quantity">
         {totalProducts > 99 ? '99+' : totalProducts}
@@ -35,7 +37,7 @@ const Empty: React.FC = () => {
   return (
     <div className="empty">
       <span>=(</span>
-      No momento não há nenhum produto adicionado.
+      No momento, não há nenhum produto adicionado.
     </div>
   );
 };

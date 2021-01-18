@@ -10,6 +10,35 @@ export default createGlobalStyle`
     -webkit-tap-highlight-color: transparent;
   }
 
+  *::-moz-selection,
+  *::selection {
+    background-color: ${colors.grays.g4};
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+  }
+  ::-webkit-scrollbar-button {
+    width: 8px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: ${colors.grays.g1};
+    box-shadow: 0px 0px 3px #dfdfdf inset;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: ${colors.grays.g3};
+    border: thin solid gray;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: ${colors.grays.g3};
+    }
+  }
+
   body {
     background-color: #F0F0F5;
     -webkit-font-smoothing: antialiased;
@@ -30,7 +59,7 @@ export default createGlobalStyle`
     padding: 40px 20px;
 
     @media (max-width: ${breakpoint.lg.max}) {
-      max-width: ${breakpoint.lg.min};
+      max-width: 800px;
     }
   }
 
