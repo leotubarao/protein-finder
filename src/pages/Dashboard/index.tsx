@@ -12,6 +12,7 @@ import { ProductState, useProduct } from '../../hooks/product';
 
 import Header from '../../components/Header';
 import Products from '../../components/Products';
+import FloatButton from '../../components/FloatButton';
 import Discount from '../../components/ModalContainer/Discount';
 
 type ProductKey = keyof ProductState;
@@ -19,7 +20,7 @@ type ProductKey = keyof ProductState;
 const Dashboard: React.FC = () => {
   const [fieldForm, setFieldForm] = useState('');
   const [inputError, setInputError] = useState('');
-  const { products } = useProduct();
+  const { products, wishlist } = useProduct();
 
   const handleFindProduct = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -72,6 +73,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
+      {wishlist.length !== 0 && <FloatButton to="/wishlist" />}
       <Discount />
 
       <Header />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BsArrowLeft } from 'react-icons/bs';
+import { useHistory } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import Product from '../../components/Products/Product';
@@ -11,10 +11,13 @@ import { useProduct } from '../../hooks/product';
 
 const Wishlist: React.FC = () => {
   const { wishlist } = useProduct();
+  const history = useHistory();
+
+  if (wishlist.length === 0) history.push('/');
 
   return (
     <>
-      <FloatButton to="/" icon={BsArrowLeft} />
+      <FloatButton to="/" />
       <Discount />
 
       <Header />

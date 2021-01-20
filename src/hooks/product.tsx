@@ -60,6 +60,10 @@ const ProductProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem('@ProteinFinder:wishlist', JSON.stringify(wishlist));
+
+    document.body.classList[wishlist.length !== 0 ? 'add' : 'remove'](
+      'has-in-wishlist',
+    );
   }, [wishlist]);
 
   const wishlistIndex = useCallback(

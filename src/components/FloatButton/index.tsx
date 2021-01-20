@@ -1,17 +1,28 @@
 import React from 'react';
-import { IconBaseProps } from 'react-icons';
+import { FiArrowLeft } from 'react-icons/fi';
+
+import Button from '../Button';
 
 import { Container } from './styles';
 
 interface FloatButtonProps {
   to: string;
-  icon: React.ComponentType<IconBaseProps>;
 }
 
-const FloatButton: React.FC<FloatButtonProps> = ({ to, icon: Icon }) => {
+const FloatButton: React.FC<FloatButtonProps> = ({ to, ...rest }) => {
+  if (to === '/wishlist')
+    return (
+      <Button to={to} isFloat {...rest}>
+        Lista de desejos
+      </Button>
+    );
+
   return (
-    <Container to={to}>
-      <Icon size={24} />
+    <Container to={to} {...rest}>
+      <span className="icon">
+        <FiArrowLeft size={24} />
+      </span>
+      <span className="content">Voltar para Home</span>
     </Container>
   );
 };

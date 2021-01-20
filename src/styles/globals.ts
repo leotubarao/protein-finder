@@ -61,6 +61,10 @@ export default createGlobalStyle`
     @media (max-width: ${breakpoint.lg.max}) {
       max-width: 800px;
     }
+
+    body.has-in-wishlist & {
+      padding-bottom: 120px;
+    }
   }
 
   body.large {
