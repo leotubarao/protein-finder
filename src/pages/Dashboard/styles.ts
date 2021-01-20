@@ -9,8 +9,12 @@ interface FormProps {
 export const Form = styled.form<FormProps>`
   display: flex;
 
-  margin-top: 40px;
+  margin-top: 20px;
   max-width: 700px;
+
+  @media (min-width: ${breakpoint.lg.min}) {
+    margin-top: 40px;
+  }
 
   input {
     flex: 1;
@@ -41,13 +45,4 @@ export const Error = styled.span`
   display: block;
   color: ${colors.red};
   margin-top: 10px;
-`;
-
-export const Products = styled.div`
-  margin-top: 80px;
-  max-width: 800px;
-
-  @media (max-width: ${breakpoint.xs.max}) {
-    margin-top: 40px;
-  }
 `;

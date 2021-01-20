@@ -1,20 +1,24 @@
 import React from 'react';
-// import { isMobile } from 'react-device-detect';
-import { BsArrowLeft } from 'react-icons/bs';
+import { useHistory } from 'react-router-dom';
 
-import Product from '../../components/Product';
 import Header from '../../components/Header';
+import Product from '../../components/Products/Product';
 import FloatButton from '../../components/FloatButton';
+import Discount from '../../components/ModalContainer/Discount';
 
 import { Products } from './styles';
 import { useProduct } from '../../hooks/product';
 
 const Wishlist: React.FC = () => {
   const { wishlist } = useProduct();
+  const history = useHistory();
+
+  if (wishlist.length === 0) history.push('/');
 
   return (
     <>
-      <FloatButton to="/" icon={BsArrowLeft} side="left" />
+      <FloatButton to="/" />
+      <Discount />
 
       <Header />
 

@@ -1,9 +1,12 @@
 import React from 'react';
 
+import { ModalProvider } from './modal';
 import { ProductProvider } from './product';
 
 const AppProvider: React.FC = ({ children }) => (
-  <ProductProvider>{children}</ProductProvider>
+  <ModalProvider>
+    <ProductProvider>{children}</ProductProvider>
+  </ModalProvider>
 );
 
 export default AppProvider;

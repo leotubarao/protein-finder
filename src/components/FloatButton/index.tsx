@@ -1,34 +1,28 @@
-import React, { useMemo } from 'react';
-import { IconBaseProps } from 'react-icons';
-import { useProduct } from '../../hooks/product';
+import React from 'react';
+import { FiArrowLeft } from 'react-icons/fi';
 
-import { Container, Total } from './styles';
+import Button from '../Button';
+
+import { Container } from './styles';
 
 interface FloatButtonProps {
   to: string;
-  icon: React.ComponentType<IconBaseProps>;
-  side?: 'left' | 'right';
 }
 
-const FloatButton: React.FC<FloatButtonProps> = ({
-  to,
-  icon: Icon,
-  side = 'right',
-}) => {
-  const { wishlist } = useProduct();
-  const totalProducts = useMemo(() => {
-    return Object.values(wishlist).reduce(
-      (acc, { quantity }) => acc + quantity,
-      0,
+const FloatButton: React.FC<FloatButtonProps> = ({ to, ...rest }) => {
+  if (to === '/wishlist')
+    return (
+      <Button to={to} isFloat {...rest}>
+        Lista de desejos
+      </Button>
     );
-  }, [wishlist]);
 
   return (
-    <Container to={to} side={side}>
-      <Icon size={24} />
-      {totalProducts > 0 && to === '/wishlist' && (
-        <Total>{totalProducts > 9 ? '9+' : totalProducts}</Total>
-      )}
+    <Container to={to} {...rest}>
+      <span className="icon">
+        <FiArrowLeft size={24} />
+      </span>
+      <span className="content">Voltar para Home</span>
     </Container>
   );
 };

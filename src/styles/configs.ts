@@ -33,4 +33,9 @@ const colors = {
   white: '#FFF',
 };
 
-export { breakpoint, colors };
+const { innerWidth } = window;
+const { clientWidth } = document.body;
+
+const sizeScroll = innerWidth - clientWidth;
+
+export { breakpoint, colors, sizeScroll };
