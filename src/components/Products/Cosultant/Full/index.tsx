@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 
-import { WishlistState } from '../../../hooks/product';
-import Quantity from '../Quantity';
+import { WishlistState } from '../../../../hooks/product';
+import Quantity from '../../Quantity';
 
 import { Container } from './styles';
 
@@ -9,7 +9,7 @@ interface ProductProps extends HTMLAttributes<HTMLElement> {
   item: WishlistState;
 }
 
-const Product: React.FC<ProductProps> = ({ item, ...rest }) => {
+const FullProduct: React.FC<ProductProps> = ({ item, ...rest }) => {
   const { product } = item;
 
   return (
@@ -56,4 +56,4 @@ const Product: React.FC<ProductProps> = ({ item, ...rest }) => {
   );
 };
 
-export default Product;
+export default FullProduct;

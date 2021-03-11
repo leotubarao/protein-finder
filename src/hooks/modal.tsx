@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useTransition } from 'react-spring';
 
 import ModalContainer from '../components/ModalContainer';
@@ -19,12 +20,16 @@ interface ModalContextData {
 const ModalContext = createContext<ModalContextData>({} as ModalContextData);
 
 const ModalProvider: React.FC = ({ children }) => {
+  const { pathname } = useLocation();
+
   const [modal, setModal] = useState(() => {
     const storageWishlistProducts = localStorage.getItem(
       '@ProteinFinder:discount',
     );
 
-    if (storageWishlistProducts) return false;
+    const isHome = pathname === '/';
+
+    if (isHome || storageWishlistProducts) return false;
 
     return true;
   });

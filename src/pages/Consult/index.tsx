@@ -6,21 +6,24 @@ import React, {
   FormEvent,
 } from 'react';
 import { isMobile } from 'react-device-detect';
+import { useLocation, useHistory } from 'react-router-dom';
 
 import { Form, Error } from './styles';
 import { ProductState, useProduct } from '../../hooks/product';
 
 import Header from '../../components/Header';
 import Products from '../../components/Products';
-import FloatButton from '../../components/FloatButton';
+import Button from '../../components/Button';
 import Discount from '../../components/ModalContainer/Discount';
 
 type ProductKey = keyof ProductState;
 
-const Dashboard: React.FC = () => {
+const Consult: React.FC = () => {
   const [fieldForm, setFieldForm] = useState('');
   const [inputError, setInputError] = useState('');
   const { products, wishlist } = useProduct();
+  const { pathname } = useLocation();
+  const history = useHistory();
 
   const handleFindProduct = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -62,6 +65,11 @@ const Dashboard: React.FC = () => {
 
     const keys = ['codigo', 'nome'] as const;
 
+    if (fieldForm === 'ltco') {
+      history.push('/consultant');
+      setFieldForm('');
+    }
+
     const filterProducts = products.filter((product: ProductState) =>
       keys.some((key: ProductKey) =>
         sanitizedString(product[key]).includes(sanitizedString(fieldForm)),
@@ -69,12 +77,12 @@ const Dashboard: React.FC = () => {
     );
 
     return filterProducts as ProductState[];
-  }, [products, fieldForm]);
+  }, [products, fieldForm, history]);
 
   return (
     <>
-      {wishlist.length !== 0 && <FloatButton to="/wishlist" />}
-      <Discount />
+      {wishlist.length !== 0 && <Button to="/wishlist" />}
+      {pathname !== '/' && <Discount />}
 
       <Header />
 
@@ -93,4 +101,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard;
+export default Consult;

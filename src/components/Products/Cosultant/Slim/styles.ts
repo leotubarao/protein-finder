@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { breakpoint, colors } from '../../../styles/configs';
+import { breakpoint, colors } from '../../../../styles/configs';
 
 export const Container = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ export const Container = styled.div`
   position: relative;
   background-color: ${colors.white};
   width: 100%;
-  padding: 24px;
+  padding: 16px 24px;
   border-radius: 5px;
   text-decoration: none;
   transition: box-shadow 200ms ease-in-out;
@@ -38,32 +38,42 @@ export const Container = styled.div`
       border-top: 1px solid ${colors.grays.g5};
       opacity: 0.3;
       margin: 15px 0;
+
+      @media (min-width: ${breakpoint.lg.min}) {
+        display: none;
+      }
+    }
+  }
+
+  div.info {
+    min-width: 160px;
+
+    @media (min-width: ${breakpoint.lg.min}) {
+      margin-left: 16px;
+      order: 1;
+      text-align: right;
     }
 
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: -15px;
-      margin-left: -15px;
+    > * {
+      display: block;
+      color: ${colors.grays.g2};
+    }
 
-      li {
-        list-style: none;
-        margin-top: 15px;
-        margin-left: 15px;
-        font-size: 14px;
+    > s,
+    > strong {
+      font-weight: bold;
+      font-size: 24px;
+    }
 
-        /* &.refColumn {
-          flex: 1;
-          & + * {
-            @media (max-width: ${breakpoint.xs.max}) {
-            }
-          }
-        } */
+    > strong {
+      color: ${colors.grays.g5};
+    }
 
-        strong {
-          display: block;
-          color: ${colors.grays.g3};
-        }
+    span {
+      font-size: 12px;
+
+      strong {
+        color: ${colors.grays.g3};
       }
     }
   }

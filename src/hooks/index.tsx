@@ -1,12 +1,15 @@
 import React from 'react';
+import { LastLocationProvider } from 'react-router-last-location';
 
 import { ModalProvider } from './modal';
 import { ProductProvider } from './product';
 
 const AppProvider: React.FC = ({ children }) => (
-  <ModalProvider>
-    <ProductProvider>{children}</ProductProvider>
-  </ModalProvider>
+  <LastLocationProvider>
+    <ModalProvider>
+      <ProductProvider>{children}</ProductProvider>
+    </ModalProvider>
+  </LastLocationProvider>
 );
 
 export default AppProvider;
