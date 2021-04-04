@@ -7,7 +7,7 @@ import React, {
   useMemo,
 } from 'react';
 
-import productState from '../data/1596671839581.json';
+import sheetsApi from '../services/sheetsApi';
 
 export interface ProductState {
   categoria: string;
@@ -46,7 +46,7 @@ const ProductContext = createContext<ProductContextData>(
 );
 
 const ProductProvider: React.FC = ({ children }) => {
-  const [products] = useState<ProductState[]>(productState);
+  const [products, setProducts] = useState<ProductState[]>([]);
 
   const [wishlist, setWishlist] = useState<WishlistState[]>(() => {
     const storageWishlistProducts = localStorage.getItem(
@@ -65,6 +65,42 @@ const ProductProvider: React.FC = ({ children }) => {
       'has-in-wishlist',
     );
   }, [wishlist]);
+
+  useEffect(() => {
+    sheetsApi().then(async (res) => {
+      const rowsProducts = await res.sheetsByIndex[0].getRows();
+
+      setProducts(
+        rowsProducts.map(
+          ({
+            categoria,
+            codigo,
+            nome,
+            pv,
+            bruto,
+            ref,
+            desc25,
+            desc35,
+            desc42,
+            desc50,
+          }) => {
+            return {
+              categoria,
+              codigo,
+              nome,
+              pv,
+              bruto,
+              ref,
+              desc25,
+              desc35,
+              desc42,
+              desc50,
+            };
+          },
+        ),
+      );
+    });
+  }, []);
 
   const wishlistIndex = useCallback(
     ({ product: { codigo: codigoProduct }, flag = false }: WishlistIndex) => {
