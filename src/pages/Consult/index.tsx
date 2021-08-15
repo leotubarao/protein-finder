@@ -8,7 +8,7 @@ import React, {
 import { isMobile } from 'react-device-detect';
 import { useLocation, useHistory } from 'react-router-dom';
 
-import { Form, Error } from './styles';
+import { Form } from './styles';
 import { ProductState, useProduct } from '../../hooks/product';
 
 import Header from '../../components/Header';
@@ -20,26 +20,9 @@ type ProductKey = keyof ProductState;
 
 const Consult: React.FC = () => {
   const [fieldForm, setFieldForm] = useState('');
-  const [inputError, setInputError] = useState('');
   const { products, wishlist } = useProduct();
   const { pathname } = useLocation();
   const history = useHistory();
-
-  const handleFindProduct = useCallback(
-    (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-
-      if (!fieldForm) {
-        setInputError('Digite o código/nome do produto.');
-        return;
-      }
-
-      setFieldForm(fieldForm);
-
-      setInputError('');
-    },
-    [fieldForm],
-  );
 
   useEffect(() => {
     const { innerHeight } = window;
@@ -53,6 +36,15 @@ const Consult: React.FC = () => {
       }
     }
   }, [fieldForm]);
+
+  const handleFindProduct = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+
+      setFieldForm(fieldForm);
+    },
+    [fieldForm],
+  );
 
   const productsFiltered = useMemo(() => {
     if (!products) return null;
@@ -86,15 +78,13 @@ const Consult: React.FC = () => {
 
       <Header />
 
-      <Form hasError={!!inputError} onSubmit={handleFindProduct}>
+      <Form onSubmit={handleFindProduct}>
         <input
           placeholder="Digite o código/nome do produto"
           value={fieldForm}
           onChange={(e) => setFieldForm(e.target.value)}
         />
       </Form>
-
-      {inputError && <Error>{inputError}</Error>}
 
       <Products content={productsFiltered} />
     </>

@@ -1,12 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { breakpoint, colors } from '../../styles/configs';
 
-interface FormProps {
-  hasError: boolean;
-}
-
-export const Form = styled.form<FormProps>`
+export const Form = styled.form`
   display: flex;
 
   margin-top: 20px;
@@ -29,20 +25,8 @@ export const Form = styled.form<FormProps>`
       text-align: center;
     }
 
-    ${(props) =>
-      props.hasError &&
-      css`
-        border-color: ${colors.red};
-      `}
-
     &::placeholder {
       color: ${colors.grays.g2};
     }
   }
-`;
-
-export const Error = styled.span`
-  display: block;
-  color: ${colors.red};
-  margin-top: 10px;
 `;
